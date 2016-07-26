@@ -47,8 +47,8 @@ Bounded view supports 3 additional attributes that you can define in layout file
 * android:boundedHeight
 
 This library supports for common views included in Android SDK. If you need to implement for others views
-such as in support library, using [https://github.com/baole/BoundedViews/blob/master/library/src/main/java/com/anttek/boundedview/BoundedViewHelper.java](BoundedViewHelper).
-See [https://github.com/baole/BoundedViews/blob/master/library/src/main/java/com/anttek/boundedview/BoundedLinearLayout.java](BoundedLinearLayout) as an example.
+such as in support library, using [BoundedViewHelper](https://github.com/baole/BoundedViews/blob/master/library/src/main/java/com/anttek/boundedview/BoundedViewHelper.java).
+See [BoundedLinearLayout](https://github.com/baole/BoundedViews/blob/master/library/src/main/java/com/anttek/boundedview/BoundedLinearLayout.java) as an example.
 
 Checkout sample app to see more detail
 
