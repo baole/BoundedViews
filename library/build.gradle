@@ -1,0 +1,69 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.jfrog.bintray'
+apply plugin: 'com.github.dcendents.android-maven'
+
+group = 'com.anttek.boundedview'
+version = VERSION
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion BUILD_TOOLS_VERSION
+
+    defaultConfig {
+        minSdkVersion 14
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+
+task generateSourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier 'sources'
+}
+
+task generateJavadocs(type: Javadoc) {
+    source = android.sourceSets.main.java.srcDirs
+    classpath += project.files(android.getBootClasspath()
+            .join(File.pathSeparator))
+}
+
+task generateJavadocsJar(type: Jar) {
+    from generateJavadocs.destinationDir
+    classifier 'javadoc'
+}
+
+generateJavadocsJar.dependsOn generateJavadocs
+
+artifacts {
+    archives generateJavadocsJar
+    archives generateSourcesJar
+}
+
+bintray {
+    user = USER
+    key = BINTRAY_KEY
+    pkg {
+        repo = 'maven'
+        name = 'com.anttek.boundedview'
+
+        version {
+            name = VERSION
+            desc = 'A collection of views that constraint on boundedWidth, boundedHeight'
+            released  = new Date()
+            vcsTag = VERSION
+        }
+
+        licenses = ['Apache-2.0']
+        vcsUrl = 'https://github.com/baole/BoundedViews.git'
+        websiteUrl = 'https://github.com/baole/BoundedViews'
+    }
+    configurations = ['archives']
+}
