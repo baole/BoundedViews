@@ -25,7 +25,7 @@ repositories {
     }
 }
 dependencies {
-    compile 'com.anttek.bounded:library:1.0@aar'
+    compile 'com.anttek.boundedview:library:1.0@aar'
 }
 ```
 
